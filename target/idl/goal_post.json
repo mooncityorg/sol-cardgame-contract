@@ -1,0 +1,189 @@
+{
+  "version": "0.1.0",
+  "name": "goal_post",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "globalAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "globalVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "transferOwnership",
+      "accounts": [
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "globalAuthority",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "newAdmin",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "updateAuthority",
+      "accounts": [
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "globalAuthority",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "newAuthority",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "deposit",
+      "accounts": [
+        {
+          "name": "player",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "globalVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "withdraw",
+      "accounts": [
+        {
+          "name": "player",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "authoritySigner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "globalAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "globalVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GlobalPool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "superAdmin",
+            "type": "publicKey"
+          },
+          {
+            "name": "authoritySigner",
+            "type": "publicKey"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidPlayerPool",
+      "msg": "Invalid Player Pool Owner"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidAdmin",
+      "msg": "Invalid Admin Authority"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidAuthority",
+      "msg": "Invalid Authority Signer to Withdraw"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidVault",
+      "msg": "Invalid Vault Address"
+    },
+    {
+      "code": 6004,
+      "name": "InsufficientVault",
+      "msg": "Insufficient Vault Balance"
+    }
+  ],
+  "metadata": {
+    "address": "CjGeFgjXCinepzwnpP9UphxiQ2D6XGgxKDYZh34dYina"
+  }
+}
