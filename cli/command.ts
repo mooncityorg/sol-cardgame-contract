@@ -11,9 +11,10 @@ programCommand("status")
     console.log("Keypair Path: ", keypair);
     console.log("RPC URL: ", rpc);
     if (!keypair) {
-      console.log("Error Config Data Input");
+      console.log("Error rpc Config Data Input");
       return;
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     await setClusterConfig(env, keypair, rpc);
 
     await getGlobalInfo();
