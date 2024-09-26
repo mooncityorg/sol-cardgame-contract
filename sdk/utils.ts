@@ -5,12 +5,11 @@ import { PROGRAM_ID } from "./config";
 
 export const getVaultBalance = async (connection: Connection) => {
   const globalVault = await getVaultAddress(PROGRAM_ID);
-
+  console.log(globalVault);
   try {
     const balance = await connection.getBalance(globalVault);
     return balance;
   } catch (e) {
-    console.error(e);
     console.log("Error while get vault balance");
     return 0;
   }
